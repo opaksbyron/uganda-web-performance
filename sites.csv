@@ -1,0 +1,36 @@
+category,country,name,url
+government,UG,Uganda Revenue Authority,https://www.ura.go.ug
+government,UG,NITA-U,https://www.nita.go.ug
+government,UG,Ministry of Health,https://www.health.go.ug
+government,UG,Uganda Bureau of Statistics,https://www.ubos.org
+government,UG,State House Uganda,https://www.statehouse.go.ug
+government,UG,Ministry of Education,https://www.education.go.ug
+government,UG,Judiciary Uganda,https://www.judiciary.go.ug
+government,UG,NIRA,https://www.nira.go.ug
+government,UG,Uganda Police,https://www.upf.go.ug
+government,UG,Ministry of ICT,https://ict.go.ug
+financial,UG,Bank of Uganda,https://www.bou.or.ug
+financial,UG,Stanbic Bank Uganda,https://www.stanbicbank.co.ug
+financial,UG,Centenary Bank,https://www.centenarybank.co.ug
+financial,UG,dfcu Bank,https://www.dfcugroup.com
+financial,UG,Absa Uganda,https://www.absa.co.ug
+financial,UG,MTN Uganda,https://www.mtn.co.ug
+financial,UG,Airtel Uganda,https://www.airtel.co.ug
+financial,UG,Equity Bank Uganda,https://equitygroupholdings.com
+financial,UG,Post Bank Uganda,https://www.postbank.co.ug
+financial,UG,Housing Finance Bank,https://www.housingfinance.co.ug
+university,UG,Makerere University,https://www.mak.ac.ug
+university,UG,ISBAT University,https://www.isbatuniversity.ac.ug
+university,UG,Kyambogo University,https://www.kyu.ac.ug
+university,UG,Mbarara University,https://www.must.ac.ug
+university,UG,Uganda Christian University,https://ucu.ac.ug
+university,UG,Busitema University,https://www.busitema.ac.ug
+university,UG,Gulu University,https://gu.ac.ug
+university,UG,Muni University,https://www.muni.ac.ug
+university,UG,Kabale University,https://kab.ac.ug
+university,UG,Lira University,https://lirauni.ac.ug
+control,INT,GOV.UK,https://www.gov.uk
+control,INT,US IRS,https://www.irs.gov
+control,INT,HSBC,https://www.hsbc.com
+control,INT,MIT,https://www.mit.edu
+control,INT,University of Oxford,https://www.ox.ac.uk

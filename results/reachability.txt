@@ -1,0 +1,36 @@
+SITE                               HTTP   URL
+Uganda Revenue Authority           200    https://www.ura.go.ug
+NITA-U                             200    https://www.nita.go.ug
+Ministry of Health                 000    https://www.health.go.ug
+Uganda Bureau of Statistics        200    https://www.ubos.org
+State House Uganda                 526    https://www.statehouse.go.ug
+Ministry of Education              200    https://www.education.go.ug
+Judiciary Uganda                   200    https://www.judiciary.go.ug
+NIRA                               200    https://www.nira.go.ug
+Uganda Police                      200    https://www.upf.go.ug
+Ministry of ICT                    200    https://ict.go.ug
+Bank of Uganda                     200    https://www.bou.or.ug
+Stanbic Bank Uganda                200    https://www.stanbicbank.co.ug
+Centenary Bank                     200    https://www.centenarybank.co.ug
+dfcu Bank                          200    https://www.dfcugroup.com
+Absa Uganda                        200    https://www.absa.co.ug
+MTN Uganda                         200    https://www.mtn.co.ug
+Airtel Uganda                      200    https://www.airtel.co.ug
+Equity Bank Uganda                 200    https://equitygroupholdings.com
+Post Bank Uganda                   200    https://www.postbank.co.ug
+Housing Finance Bank               403    https://www.housingfinance.co.ug
+Makerere University                200    https://www.mak.ac.ug
+ISBAT University                   200    https://www.isbatuniversity.ac.ug
+Kyambogo University                000    https://www.kyu.ac.ug
+Mbarara University                 200    https://www.must.ac.ug
+Uganda Christian University        200    https://ucu.ac.ug
+Busitema University                200    https://www.busitema.ac.ug
+Gulu University                    200    https://gu.ac.ug
+Muni University                    200    https://www.muni.ac.ug
+Kabale University                  200    https://kab.ac.ug
+Lira University                    200    https://lirauni.ac.ug
+GOV.UK                             200    https://www.gov.uk
+US IRS                             200    https://www.irs.gov
+HSBC                               200    https://www.hsbc.com
+MIT                                200    https://www.mit.edu
+University of Oxford               403    https://www.ox.ac.uk

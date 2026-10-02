@@ -1,0 +1,39 @@
+category,country,name,url,status,runs,score,fcp_ms,lcp_ms,tbt_ms,cls,speed_index_ms,tti_ms,total_bytes,requests
+government,UG,"Uganda Revenue Authority",https://www.ura.go.ug,ok,3,41,7949,27132,580,0.000,12971,33111,6683373,141
+government,UG,"NITA-U",https://www.nita.go.ug,ok,3,38,3714,13440,54,0.448,11184,21457,5453455,50
+government,UG,"Ministry of Health",https://www.health.go.ug,failed,,,,,,,,,,
+government,UG,"Uganda Bureau of Statistics",https://www.ubos.org,ok,3,39,10384,51244,26,0.346,11158,54188,16075961,102
+government,UG,"State House Uganda",https://www.statehouse.go.ug,failed,,,,,,,,,,
+government,UG,"Ministry of Education",https://www.education.go.ug,ok,3,64,2973,10755,4,0.001,5688,10823,8388471,95
+government,UG,"Judiciary Uganda",https://www.judiciary.go.ug,ok,3,72,2359,6665,0,0.033,3924,6665,2429246,51
+government,UG,"NIRA",https://www.nira.go.ug,ok,3,43,1968,5118,203,0.913,11893,23479,8602046,64
+government,UG,"Uganda Police",https://www.upf.go.ug,ok,3,38,5064,11936,140,0.340,10239,12066,3992037,109
+government,UG,"Ministry of ICT",https://ict.go.ug,ok,3,61,4469,49643,0,0.000,6033,51345,13486558,52
+financial,UG,"Bank of Uganda",https://www.bou.or.ug,ok,3,31,2498,35729,294,1.194,15797,35763,18580412,271
+financial,UG,"Stanbic Bank Uganda",https://www.stanbicbank.co.ug,ok,3,46,4688,21245,448,0.030,8423,21627,4805063,221
+financial,UG,"Centenary Bank",https://www.centenarybank.co.ug,ok,3,37,6056,19149,820,0.000,8806,30331,5103512,103
+financial,UG,"dfcu Bank",https://www.dfcugroup.com,ok,3,18,3634,7644,743,0.704,10720,30899,4265796,154
+financial,UG,"Absa Uganda",https://www.absa.co.ug,ok,3,46,5544,11586,312,0.146,8084,16251,2066666,92
+financial,UG,"MTN Uganda",https://www.mtn.co.ug,ok,3,51,4061,66164,363,0.014,8173,66164,14648410,99
+financial,UG,"Airtel Uganda",https://www.airtel.co.ug,ok,3,25,2324,19182,757,1.364,5402,19662,5953709,85
+financial,UG,"Equity Bank Uganda",https://equitygroupholdings.com,ok,3,49,4151,8027,467,0.000,8339,12806,1972765,67
+financial,UG,"Post Bank Uganda",https://www.postbank.co.ug,failed,,,,,,,,,,
+financial,UG,"Housing Finance Bank",https://www.housingfinance.co.ug,ok,3,37,4078,12125,287,0.280,12894,23642,4742476,154
+university,UG,"Makerere University",https://www.mak.ac.ug,ok,3,56,4536,30336,242,0.000,6420,30741,6015741,41
+university,UG,"ISBAT University",https://www.isbatuniversity.ac.ug,ok,3,35,4950,19609,78,0.545,10221,19649,5180656,120
+university,UG,"Kyambogo University",https://www.kyu.ac.ug,ok,3,53,4604,9556,68,0.074,7699,20932,3925304,158
+university,UG,"Mbarara University",https://www.must.ac.ug,ok,3,37,3605,10404,14,0.626,9384,10740,2850839,80
+university,UG,"Uganda Christian University",https://ucu.ac.ug,ok,3,52,6891,20466,104,0.109,10053,25089,6851964,177
+control,INT,"GOV.UK",https://www.gov.uk,ok,3,98,1781,1781,0,0.000,2871,1781,198699,15
+control,INT,"US IRS",https://www.irs.gov,ok,3,73,2966,2966,481,0.047,5266,13952,1632839,54
+control,INT,"HSBC",https://www.hsbc.com,ok,3,68,2638,6797,74,0.060,5311,10154,2871792,50
+control,INT,"MIT",https://www.mit.edu,ok,3,58,4986,5939,122,0.102,7075,9428,1739363,28
+control,INT,"University of Oxford",https://www.ox.ac.uk,ok,3,82,2571,3560,150,0.000,5621,7421,749254,35
+government,UG,"Ministry of Health",https://www.health.go.ug,failed,,,,,,,,,,
+government,UG,"State House Uganda",https://www.statehouse.go.ug,failed,,,,,,,,,,
+financial,UG,"Post Bank Uganda",https://www.postbank.co.ug,failed,,,,,,,,,,
+university,UG,"Busitema University",https://www.busitema.ac.ug,ok,3,26,10818,81024,343,0.500,20703,85506,64194337,81
+university,UG,"Gulu University",https://gu.ac.ug,ok,3,54,28581,45435,94,0.000,28581,47364,15829931,200
+university,UG,"Muni University",https://www.muni.ac.ug,ok,3,56,7537,16584,122,0.000,8127,16884,3048984,123
+university,UG,"Kabale University",https://kab.ac.ug,ok,3,55,15271,19860,41,0.041,33068,61476,35715018,235
+university,UG,"Lira University",https://lirauni.ac.ug,ok,3,44,13424,27224,32,0.230,15685,27311,17685380,179

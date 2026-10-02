@@ -1,0 +1,105 @@
+/**
+ * Measure web performance of the study sample under a fixed, throttled
+ * network profile, using Lighthouse's own simulated throttling.
+ *
+ * Each site is measured RUNS times and the median is reported, because
+ * single Lighthouse runs vary by 10-20% on the same page.
+ *
+ *   node scripts/measure.mjs [--runs 3] [--only university] [--limit 5]
+ */
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+
+const arg = (f, d) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i+1] : d }
+const RUNS  = Number(arg('--runs', 3))
+const ONLY  = arg('--only', null)
+const LIMIT = Number(arg('--limit', 0))
+
+// Slow 3G — the condition the study is about. Lighthouse's own preset values.
+const THROTTLE = {
+  rttMs: 150,                    // round-trip time
+  throughputKbps: 1638.4,        // ~1.6 Mbps down
+  cpuSlowdownMultiplier: 4,      // low-end device
+  requestLatencyMs: 150 * 3.75,
+  downloadThroughputKbps: 1638.4,
+  uploadThroughputKbps: 675,
+}
+
+const rows = readFileSync('sites.csv', 'utf8').trim().split('\n').slice(1)
+  .map(l => { const [category, country, name, url] = l.split(','); return {category, country, name, url} })
+  .filter(s => !ONLY || s.category === ONLY)
+const sample = LIMIT ? rows.slice(0, LIMIT) : rows
+
+mkdirSync('results/raw', { recursive: true })
+const num = v => (v == null || Number.isNaN(v)) ? '' : Math.round(v)
+const median = a => { const s=[...a].sort((x,y)=>x-y); const m=s.length>>1
+  return s.length%2 ? s[m] : (s[m-1]+s[m])/2 }
+
+const errors = []
+const sleepSync = ms => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms)
+const out = []
+for (const site of sample) {
+  const runs = []
+  for (let i = 1; i <= RUNS; i++) {
+    process.stdout.write(`  ${site.name} — run ${i}/${RUNS} … `)
+    let ok = false
+    for (let attempt = 1; attempt <= 2 && !ok; attempt++) {
+      try {
+        const json = execFileSync('npx', ['lighthouse', site.url,
+          '--output=json', '--quiet', '--only-categories=performance',
+          '--form-factor=mobile', '--screenEmulation.mobile',
+          `--throttling.rttMs=${THROTTLE.rttMs}`,
+          `--throttling.throughputKbps=${THROTTLE.throughputKbps}`,
+          `--throttling.cpuSlowdownMultiplier=${THROTTLE.cpuSlowdownMultiplier}`,
+          `--throttling.requestLatencyMs=${THROTTLE.requestLatencyMs}`,
+          `--throttling.downloadThroughputKbps=${THROTTLE.downloadThroughputKbps}`,
+          `--throttling.uploadThroughputKbps=${THROTTLE.uploadThroughputKbps}`,
+          '--chrome-flags=--headless=new --no-sandbox --disable-gpu',
+          '--max-wait-for-load=90000',
+        ], { encoding: 'utf8', maxBuffer: 200 * 1024 * 1024, stdio: ['ignore','pipe','pipe'] })
+        const lh = JSON.parse(json)
+        const a = lh.audits
+        runs.push({
+          score: Math.round((lh.categories.performance.score ?? 0) * 100),
+          fcp:  a['first-contentful-paint'].numericValue,
+          lcp:  a['largest-contentful-paint'].numericValue,
+          tbt:  a['total-blocking-time'].numericValue,
+          cls:  a['cumulative-layout-shift'].numericValue,
+          si:   a['speed-index'].numericValue,
+          tti:  a['interactive']?.numericValue ?? null,
+          bytes: a['total-byte-weight'].numericValue,
+          requests: a['network-requests']?.details?.items?.length ?? null,
+        })
+        writeFileSync(`results/raw/${site.name.replace(/\W+/g,'_')}_${i}.json`, json)
+        console.log(attempt > 1 ? `ok (retry)` : 'ok')
+        ok = true
+      } catch (e) {
+        const why = ((e.stderr||'').trim().split('\n').pop() || e.message || '').slice(0,140)
+        if (attempt === 2) { console.log(`FAILED — ${why}`); errors.push(`${site.name}: ${why}`) }
+        else { sleepSync(4000) }
+      }
+    }
+    sleepSync(3000)   // let Chrome fully exit before the next launch
+  }
+  if (!runs.length) { out.push({...site, status:'failed'}); continue }
+  const pick = k => median(runs.map(r => r[k]).filter(v => v != null))
+  out.push({ ...site, status:'ok', n: runs.length,
+    score: pick('score'), fcp: pick('fcp'), lcp: pick('lcp'), tbt: pick('tbt'),
+    cls: pick('cls'), si: pick('si'), tti: pick('tti'),
+    bytes: pick('bytes'), requests: pick('requests') })
+}
+
+writeFileSync('results/measurements.json', JSON.stringify(out, null, 2))
+const hdr = 'category,country,name,url,status,runs,score,fcp_ms,lcp_ms,tbt_ms,cls,speed_index_ms,tti_ms,total_bytes,requests'
+writeFileSync('results/measurements.csv', [hdr, ...out.map(r =>
+  [r.category,r.country,`"${r.name}"`,r.url,r.status,
+   r.n ?? '', r.score ?? '',
+   num(r.fcp), num(r.lcp), num(r.tbt),
+   r.cls == null ? '' : r.cls.toFixed(3),
+   num(r.si), num(r.tti), num(r.bytes),
+   r.requests ?? ''].join(','))].join('\n'))
+console.log(`\nwrote results/measurements.csv (${out.length} sites)`)
+const good = out.filter(r=>r.status==='ok').length
+console.log(`  ${good}/${out.length} measured, ${out.length-good} failed`)
+if (errors.length) { writeFileSync('results/errors.log', errors.join('\n'))
+  console.log('  failure reasons -> results/errors.log') }

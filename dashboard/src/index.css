@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* UI tokens follow the same system as the author's portfolio; the data-mark
+   roles are separate because a brand accent is not automatically a safe series
+   hue. The teal here fails the chroma floor on light and the lightness band on
+   dark, so it stays on chrome and the marks use a validated blue. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-series: var(--series);
+  --color-grid: var(--grid);
+  --color-axis: var(--axis);
+  --color-good: var(--good);
+  --color-warning: var(--warning);
+  --color-critical: var(--critical);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root,
+[data-theme="dark"] {
+  --bg: #0b0e14;
+  --surface: #11151f;
+  --raised: #161b27;
+  --line: #232a3a;
+  --ink: #e6e9f0;
+  --muted: #9aa4b8;
+  --faint: #7c8699;
+  --accent: #5eead4;
+  --accent-soft: rgb(94 234 212 / 0.12);
+
+  --series: #3987e5;
+  --grid: #1c2231;
+  --axis: #2f3850;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --critical: #e66767;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --raised: #f4f5f8;
+  --line: #e3e6ed;
+  --ink: #11151f;
+  --muted: #515a6e;
+  --faint: #687185;
+  --accent: #0d7d6e;
+  --accent-soft: rgb(13 125 110 / 0.09);
+
+  --series: #2a78d6;
+  --grid: #eceef3;
+  --axis: #cdd2dd;
+  --good: #047804;
+  --warning: #8a5a00;
+  --critical: #b32626;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:where(a, button, [tabindex], th[role="columnheader"] button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
