@@ -105,16 +105,7 @@ export default function App() {
       <footer className="border-t border-line">
         <div className="mx-auto max-w-5xl px-6 py-10">
           <p className="text-sm text-muted">
-            Measurements, scripts and raw Lighthouse output are public.{" "}
-            <a
-              href={meta.repo}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-accent transition hover:underline"
-            >
-              Reproduce this on GitHub
-            </a>
-            .
+            Measurements, scripts and raw Lighthouse output are public.
           </p>
           <p className="mt-6 font-mono text-xs text-faint">
             © {new Date().getFullYear()} {meta.author}. All rights reserved.
